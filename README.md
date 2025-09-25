@@ -15,7 +15,7 @@ Amaç: MRI görüntülerinden beyin tümörlerini sınıflandırmaktıe.
 
 Veri seti `Training/` ve `Testing/` klasörlerine ayrılmıştır. Eğitim setinden %15 oranında doğrulama (validation) ayrılmıştır.
 
----
+
 
 ##  Yöntemler
 Projede iki farklı yaklaşım uygulanmıştır:
@@ -30,7 +30,7 @@ Projede iki farklı yaklaşım uygulanmıştır:
    - İki aşamalı eğitim: *Freeze* ve *Fine-tune*  
    - Amaç: Daha yüksek doğruluk ve genellenebilirlik  
 
----
+
 
 ##  Metrikler ve Sonuçlar
 - **Baseline CNN**
@@ -50,7 +50,7 @@ Model değerlendirmelerinde kullanılan metrikler:
 - ROC-AUC skorları  
 - Grad-CAM görselleştirmeleri  
 
----
+
 
 ##  Hata Analizi
 - **Meningioma sınıfında** model hataları belirgin.  
@@ -60,14 +60,14 @@ Model değerlendirmelerinde kullanılan metrikler:
   - Kontrast/brightness odaklı augmentasyonlar  
   - Daha uzun fine-tuning  
 
----
+
 
 ##  Ekler
 - **TensorBoard** entegrasyonu ile eğitim süreci izlendi.  
 - Hiperparametre denemeleri (dropout, dense units, kernel size, optimizer, batch size) yapıldı.  
 - Bonus: Grad-CAM ile modelin odaklandığı bölgeler görselleştirildi.  
 
----
+
 
 ##  Sonuç ve Gelecek Çalışmalar
 Bu proje sonucunda:  
@@ -81,10 +81,10 @@ Bu proje sonucunda:
 - Modeli bir arayüz ile deploy etmek (ör. Streamlit, Gradio)  
 - Gerçek zamanlı MRI verisi üzerinde denemeler yapmak  
 
----
+
 
 ##  Linkler
 - [Kaggle Notebook — Brain Tumor MRI Classification](https://www.kaggle.com/code/username/brain-tumor-mri-classification)  
 - [Kaggle Dataset](https://www.kaggle.com/datasets)  
 
----
+
