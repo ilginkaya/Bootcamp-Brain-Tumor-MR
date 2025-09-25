@@ -90,7 +90,6 @@ kullanılmıştır.
 
 
 ##  Linkler
-- [Kaggle Notebook — Brain Tumor MRI Classification](https://www.kaggle.com/code/username/brain-tumor-mri-classification)  
-- [Kaggle Dataset](https://www.kaggle.com/datasets)  
+- https://www.kaggle.com/code/ilgnkaya/bootcamp-brain-tumor-mr
 
 
