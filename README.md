@@ -5,81 +5,87 @@ Ilgın Kaya Akbank Derin Öğrenme Bootcamp Brain Tumor MR Classification Proje 
 Bu proje, **Akbank Derin Öğrenme Bootcamp** kapsamında geliştirilmiştir.  
 Amaç: MRI görüntülerinden beyin tümörlerini sınıflandırmaktıe.  
 
-## Veri Seti
+##  Veri Seti
 - Kullanılan veri seti: [Brain Tumor MRI Dataset](https://www.kaggle.com/datasets)  
-- Sınıflar:
-  - **Glioma**
-  - **Meningioma**
-  - **Pituitary**
-  - **No Tumor**
+- Dört sınıf içermektedir:  
+  - **Glioma**  
+  - **Meningioma**  
+  - **Pituitary**  
+  - **No Tumor**  
 
-Veri seti `Training/` ve `Testing/` klasörlerine ayrılmıştır. Eğitim setinden %15 oranında doğrulama (validation) ayrılmıştır.
+Veri seti `Training/` ve `Testing/` klasörlerine ayrılmıştır.  
+Eğitim setinden %15 oranında **validation** ayrımı yapılmıştır (stratified). 
+
 
 
 
 ##  Yöntemler
-Projede iki farklı yaklaşım uygulanmıştır:
+Projede iki farklı yaklaşım denenmiştir:  
 
-1. **Baseline CNN**  
-   - 3 adet Conv2D + MaxPooling blok  
-   - Dense (128) + Dropout(0.4) + Softmax  
-   - Amaç: Referans doğruluk elde etmek  
+1. **Baseline CNN (Referans Model)**  
+   - 3 blok: Conv2D → BatchNorm → ReLU → MaxPooling  
+   - Dense(128) + Dropout(0.4) + Softmax  
+   - Amaç: Basit bir CNN ile başlangıç doğruluğu elde etmek  
 
 2. **Transfer Learning (EfficientNetB0)**  
-   - ImageNet ile önceden eğitilmiş EfficientNetB0  
-   - İki aşamalı eğitim: *Freeze* ve *Fine-tune*  
-   - Amaç: Daha yüksek doğruluk ve genellenebilirlik  
-
+   - ImageNet ile önceden eğitilmiş EfficientNetB0 tabanı  
+   - İki aşamalı eğitim:  
+     - *Freeze*: yalnız üst katmanlar eğitildi  
+     - *Fine-tune*: taban açılarak düşük öğrenme oranıyla yeniden eğitildi  
+   - Amaç: Daha yüksek doğruluk ve güçlü genelleme sağlamak  
 
 
 ##  Metrikler ve Sonuçlar
 - **Baseline CNN**
   - Test doğruluğu: ~%74  
-  - Meningioma sınıfında düşük recall  
+  - Meningioma sınıfında düşük recall (en zorlayıcı sınıf)  
+
 - **EfficientNetB0 (Fine-tuned)**
   - Test doğruluğu: ~%88  
   - ROC-AUC (macro): **0.9835**  
   - ROC-AUC (weighted): **0.984**  
   - En başarılı sınıflar: *No Tumor* ve *Pituitary*  
-  - En zayıf sınıf: *Meningioma* (recall düşük)  
+  - Görece zayıf kalan sınıf: *Meningioma*  
 
-Model değerlendirmelerinde kullanılan metrikler:
+Modelin değerlendirilmesinde:  
 - Accuracy & Loss grafikleri  
 - Confusion Matrix  
 - Classification Report  
 - ROC-AUC skorları  
 - Grad-CAM görselleştirmeleri  
+kullanılmıştır. 
 
 
 
 ##  Hata Analizi
-- **Meningioma sınıfında** model hataları belirgin.  
-- Çoğunlukla *pituitary* veya *no_tumor* sınıfları ile karışıyor.  
-- Çözüm önerileri:  
+- **Meningioma sınıfı**, diğer sınıflarla en çok karışan sınıftır.  
+- Bazı örnekler *pituitary*, bazıları ise *no_tumor* olarak tahmin edilmiştir.  
+- Olası çözüm yolları:  
   - Daha fazla meningioma verisi eklemek  
   - Kontrast/brightness odaklı augmentasyonlar  
-  - Daha uzun fine-tuning  
+  - Daha uzun fine-tuning veya farklı transfer learning modelleri denemek  
+
 
 
 
 ##  Ekler
-- **TensorBoard** entegrasyonu ile eğitim süreci izlendi.  
-- Hiperparametre denemeleri (dropout, dense units, kernel size, optimizer, batch size) yapıldı.  
-- Bonus: Grad-CAM ile modelin odaklandığı bölgeler görselleştirildi.  
+- **TensorBoard entegrasyonu** ile eğitim süreci izlendi.  
+- **Hiperparametre denemeleri** yapıldı (dropout, dense units, kernel size, optimizer, batch size).  
+- **Grad-CAM** kullanılarak modelin karar verirken hangi bölgeleri dikkate aldığı görselleştirildi.  
 
 
 
 ##  Sonuç ve Gelecek Çalışmalar
-Bu proje sonucunda:  
-- Baseline CNN → referans doğruluk  
-- Transfer Learning → daha yüksek doğruluk, güçlü genelleme  
-- ROC-AUC skorları → modelin sınıfları ayırt etmede başarılı olduğunu doğruladı  
+- Baseline CNN → referans doğruluk sağladı (~%74).  
+- Transfer Learning → doğruluk %88’e ulaştı, genelleme gücü arttı.  
+- ROC-AUC skorları (~0.98) → modelin sınıfları ayırt etmede çok başarılı olduğunu gösterdi.
 
+  
 **Gelecek çalışmalar için:**  
 - Veri artırma (data augmentation) yöntemlerini çeşitlendirmek  
-- Daha farklı transfer learning modelleri denemek (ResNet, DenseNet)  
-- Modeli bir arayüz ile deploy etmek (ör. Streamlit, Gradio)  
-- Gerçek zamanlı MRI verisi üzerinde denemeler yapmak  
+- Alternatif transfer learning modelleri (ResNet, DenseNet) denemek  
+- Basit bir arayüzle (Streamlit/Gradio) deploy etmek  
+- Gerçek zamanlı MRI verileri üzerinde denemeler yapmak   
 
 
 
