@@ -1,5 +1,5 @@
 # Bootcamp-Brain-Tumor-MR
-Ilgın Kaya Akbank Bootcamp Brain Tumor MR Proje Reposu
+Ilgın Kaya Akbank Derin Öğrenme Bootcamp Brain Tumor MR Classification Proje Reposu
 # Brain Tumor MRI Classification — CNN & Transfer Learning
 
 Bu proje, **Akbank Derin Öğrenme Bootcamp** kapsamında geliştirilmiştir.  
