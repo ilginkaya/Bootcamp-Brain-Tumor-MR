@@ -3,7 +3,7 @@ Ilgın Kaya Akbank Derin Öğrenme Bootcamp Brain Tumor MR Classification Proje 
 # Brain Tumor MRI Classification — CNN & Transfer Learning
 
 Bu proje, **Akbank Derin Öğrenme Bootcamp** kapsamında geliştirilmiştir.  
-Amaç: MRI görüntülerinden beyin tümörlerini sınıflandırmaktıe.  
+Amaç: MRI görüntülerinden beyin tümörlerini sınıflandırmaktır.  
 
 ##  Veri Seti
 - Kullanılan veri seti: [Brain Tumor MRI Dataset](https://www.kaggle.com/datasets)  
@@ -90,6 +90,6 @@ kullanılmıştır.
 
 
 ##  Linkler
-- https://www.kaggle.com/code/ilgnkaya/bootcamp-brain-tumor-mr
+- [Kaggle Notebook] https://www.kaggle.com/code/ilgnkaya/bootcamp-brain-tumor-mr
 
 
