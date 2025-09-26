@@ -90,6 +90,6 @@ kullanılmıştır.
 
 
 ##  Linkler
-- https://www.kaggle.com/code/ilgnkaya/bootcamp-brain-tumor-mr 
+- https://www.kaggle.com/code/ilgnkaya/bootcamp-brain-tumor-mr
 
 
